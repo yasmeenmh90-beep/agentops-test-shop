@@ -9,7 +9,7 @@ DISCOUNT_CODES: dict[str, float] = {
 
 def discount_rate(code: str | None) -> float:
     """Return the discount rate for a code (0.10 means 10% off)."""
-    return DISCOUNT_CODES.get(code)
+    return DISCOUNT_CODES.get(code, 0.0)
 
 
 def order_total(items: list[dict], discount_code: str | None = None) -> float:
