@@ -9,11 +9,14 @@ def paginate(items: list[dict], page: int | str, size: int) -> dict:
     if page == "last":
         page = pages
     page = int(page)
-    start = page * size
+    # Clamp page to valid range
+    page = max(1, min(page, pages))
+    start = (page - 1) * size
     chunk = items[start:start + size]
+    first_id = chunk[0]["id"] if chunk else None
     return {
         "page": page,
         "pages": pages,
-        "first_id": items[start]["id"],
+        "first_id": first_id,
         "items": chunk,
     }
