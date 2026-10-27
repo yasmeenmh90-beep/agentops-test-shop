@@ -1,4 +1,3 @@
-import pytest
 from orders.stats import average_order_value
 
 
